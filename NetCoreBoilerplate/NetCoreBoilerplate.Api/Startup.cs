@@ -39,7 +39,7 @@ namespace NetCoreBoilerplate.Api
             });
 
             services.AddDbContext<BoilerplateDbContext>(
-                options => options.UseInMemoryDatabase("boilerplate-database"));
+                options => options.UseSqlite(@$"Data source=C:\Users\comte\Documents\NetCoreBoilerplate\db.sqlite"));
 
             // interactors
             services.AddTransient<ListWeatherForecastsInteractor>();
