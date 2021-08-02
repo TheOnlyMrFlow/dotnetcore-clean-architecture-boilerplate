@@ -1,0 +1,18 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net5.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.EntityFrameworkCore.InMemory" Version="5.0.8" />
+    <PackageReference Include="Swashbuckle.AspNetCore" Version="5.6.3" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\NetCoreBoilerplate.Application\NetCoreBoilerplate.Application.csproj" />
+    <ProjectReference Include="..\NetCoreBoilerplate.Domain\NetCoreBoilerplate.Domain.csproj" />
+    <ProjectReference Include="..\NetCoreBoilerplate.Persistence.EFCore\NetCoreBoilerplate.Persistence.EFCore.csproj" />
+  </ItemGroup>
+
+</Project>
