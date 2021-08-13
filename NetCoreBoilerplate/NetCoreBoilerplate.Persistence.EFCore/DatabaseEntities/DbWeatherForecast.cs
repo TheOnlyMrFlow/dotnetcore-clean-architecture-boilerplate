@@ -30,7 +30,7 @@ namespace NetCoreBoilerplate.Persistence.EFCore.DatabaseEntities
             };
         }
 
-        public DbWeatherForecast FromDomainEntity(WeatherForecast weatherForecast)
+        public static DbWeatherForecast FromDomainEntity(WeatherForecast weatherForecast)
         {
             return new DbWeatherForecast()
             {

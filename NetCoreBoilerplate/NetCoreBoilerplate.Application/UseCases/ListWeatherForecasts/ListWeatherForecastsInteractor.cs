@@ -5,13 +5,13 @@ using System.Threading.Tasks;
 
 namespace NetCoreBoilerplate.Application.UseCases.ListWeatherForecasts
 {
-    public class ListWeatherForecastsInteractor : BaseUseCaseInteractor<ListWeatherForecastsRequest, ListWeatherForecastsResponse>
+    public class ListWeatherForecastsInteractor : BaseUseCaseInteractor<ListWeatherForecastsRequest, ListWeatherForecastsResponse, IListWeatherForecastsPresenter>
     {
-        private IWeatherForecastRepository _forecastRepository { get; }
+        private IWeatherForecastRepository _weatherForecastRepository { get; }
 
-        public ListWeatherForecastsInteractor(IWeatherForecastRepository forecastRepository)
+        public ListWeatherForecastsInteractor(IWeatherForecastRepository weatherForecastRepository)
         {
-            _forecastRepository = forecastRepository;
+            _weatherForecastRepository = weatherForecastRepository;
         }
 
         public override async Task Invoke()
@@ -19,7 +19,7 @@ namespace NetCoreBoilerplate.Application.UseCases.ListWeatherForecasts
             try
             {
                 var response = new ListWeatherForecastsResponse();
-                response.PaginatedForecasts = await _forecastRepository.ListForecasts(_request.PaginationSpec);
+                response.PaginatedForecasts = await _weatherForecastRepository.ListForecasts(_request.PaginationSpec);
                 _presenter?.PresentSuccess(response);
 
                 return;

@@ -13,5 +13,7 @@ namespace NetCoreBoilerplate.Application.Infra.Persistence
         public Task<IEnumerable<WeatherForecast>> ListForecasts();
 
         public Task<PaginatedResult<WeatherForecast>> ListForecasts(PaginationSpec paginationSpec);
+
+        public Task CreateForecast(WeatherForecast forecast);
     }
 }

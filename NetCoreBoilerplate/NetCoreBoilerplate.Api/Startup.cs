@@ -9,6 +9,7 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
 using NetCoreBoilerplate.Application.Infra.Persistence;
+using NetCoreBoilerplate.Application.UseCases.CreateWeatherForecast;
 using NetCoreBoilerplate.Application.UseCases.ListWeatherForecasts;
 using NetCoreBoilerplate.Persistence.EFCore;
 using NetCoreBoilerplate.Persistence.EFCore.Repositories;
@@ -43,6 +44,7 @@ namespace NetCoreBoilerplate.Api
 
             // interactors
             services.AddTransient<ListWeatherForecastsInteractor>();
+            services.AddTransient<CreateWeatherForecastInteractor>();
 
             // repositories
             services.AddTransient<IWeatherForecastRepository, WeatherForecastEFRepository>();

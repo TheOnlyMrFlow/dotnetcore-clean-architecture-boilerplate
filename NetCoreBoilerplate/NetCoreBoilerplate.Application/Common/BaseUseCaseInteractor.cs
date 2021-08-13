@@ -6,20 +6,22 @@ using System.Threading.Tasks;
 
 namespace NetCoreBoilerplate.Application.Common
 {
-    public abstract class BaseUseCaseInteractor<TRequest, TResponse> where TResponse : IUseCaseResponse
+    public abstract class BaseUseCaseInteractor<TRequest, TResponse, TPresenter>
+        where TResponse : IUseCaseResponse
+        where TPresenter : IUseCasePresenter<TResponse>
     {
-        protected IUseCasePresenter<TResponse> _presenter;
+        protected TPresenter _presenter;
 
         protected TRequest _request;
 
-        public BaseUseCaseInteractor<TRequest, TResponse> SetPresenter(IUseCasePresenter<TResponse> presenter)
+        public BaseUseCaseInteractor<TRequest, TResponse, TPresenter> SetPresenter(TPresenter presenter)
         {
             _presenter = presenter;
 
             return this;
         }
 
-        public BaseUseCaseInteractor<TRequest, TResponse> SetRequest(TRequest request)
+        public BaseUseCaseInteractor<TRequest, TResponse, TPresenter> SetRequest(TRequest request)
         {
             _request = request;
 

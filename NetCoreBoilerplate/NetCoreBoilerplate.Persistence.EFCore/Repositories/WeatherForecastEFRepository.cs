@@ -2,6 +2,7 @@
 using NetCoreBoilerplate.Application.Common.Pagination;
 using NetCoreBoilerplate.Application.Infra.Persistence;
 using NetCoreBoilerplate.Domain.Entities;
+using NetCoreBoilerplate.Persistence.EFCore.DatabaseEntities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -42,6 +43,14 @@ namespace NetCoreBoilerplate.Persistence.EFCore.Repositories
         private Task<int> GetWeatherForecastsCount()
         {
             return _dbContext.WeatherForecasts.CountAsync();
+        }
+
+        public async Task CreateForecast(WeatherForecast forecast)
+        {
+            var dbForecast = DbWeatherForecast.FromDomainEntity(forecast);
+
+            await _dbContext.AddAsync(dbForecast);
+            await _dbContext.SaveChangesAsync();
         }
     }
 }
